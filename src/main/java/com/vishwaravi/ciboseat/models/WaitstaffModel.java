@@ -1,8 +1,10 @@
 package com.vishwaravi.ciboseat.models;
 
+import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.List;
 
+import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -25,7 +27,7 @@ import lombok.NoArgsConstructor;
 public class WaitstaffModel implements UserDetails{
 
     @Id
-    @Column(name = "ID", nullable = false)
+    @Column(name = "id", nullable = false)
     private Long Id;
 
     @Column(name = "name",nullable = false)
@@ -36,6 +38,10 @@ public class WaitstaffModel implements UserDetails{
 
     @Column(name = "password",nullable = false)
     private String password;
+
+    @Column(name="time_stamp")
+    @CreationTimestamp
+    private LocalDateTime timeStamp;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
