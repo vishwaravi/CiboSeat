@@ -5,7 +5,7 @@ This app make Food Ordering more easy and convenient for Restaurant to manage Fo
 _**(still in development)**_
 ## Tech  :
 - Java (version : 21 LTS)
-- Spring Boot (version : 3.4.1)
+- Spring Boot (version : 3.4.2)
 - Spring Security
 - SQL (maria DB)
 

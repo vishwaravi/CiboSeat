@@ -17,6 +17,10 @@ import org.springframework.security.web.SecurityFilterChain;
 
 import com.vishwaravi.ciboseat.services.WaitStaffService;
 
+/*
+ * Security Configuration For Authentication and Authorization.
+ * for User Name Password Authentication using DAO Authentication.
+ */
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
@@ -26,6 +30,13 @@ public class SecurityConfig {
     @Autowired
     CustomUserDetailService customUserDetailService;
 
+    /**
+     * Filter Chain with WHITE LISTED Endpoints and Protected Endpoints.
+     * Diabled CSRF for testing Purpose.
+     * @param http
+     * @return
+     * @throws Exception
+     */
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
@@ -39,6 +50,12 @@ public class SecurityConfig {
         return http.build();
     }
 
+    /**
+     * Function for Configuring Authentication Manager With Dao Authentocation Provider.
+     * @param userDetailsService - for User Information
+     * @param passwordEncoder - BCrypt Password Encoder
+     * @return
+     */
     @Bean
     AuthenticationManager authenticationManager(@Qualifier("CustomUserDetailService") UserDetailsService userDetailsService,PasswordEncoder passwordEncoder){
         DaoAuthenticationProvider daoAuthenticationProvider = new DaoAuthenticationProvider();

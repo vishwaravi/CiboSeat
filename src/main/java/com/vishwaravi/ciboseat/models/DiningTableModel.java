@@ -9,6 +9,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -18,19 +20,20 @@ import lombok.NoArgsConstructor;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "customer_orders")
+@Table(name = "dining_table")
 public class DiningTableModel {
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private Integer Id;
-
-    @Column(name = "waitstaff_id",nullable = true)
-    private Long waitStaffId;
+    
+    @OneToOne
+    @JoinColumn(name = "waitstaff_id",referencedColumnName = "id")
+    private WaitstaffModel waitStaffId;
 
     @Column(name="seat_count")
-    private Integer SeatCount;
+    private Integer seatCount;
 
     @Column(name = "occupied_count")
     private Integer occupiedCount;

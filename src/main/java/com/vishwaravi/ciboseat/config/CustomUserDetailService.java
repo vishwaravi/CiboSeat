@@ -7,7 +7,10 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.vishwaravi.ciboseat.repositories.WaistaffRepo;
-
+/**
+ * Custom Service Class that implements the UserDetails Service
+ * for Spring Security Configuration.
+ */
 @Service("CustomUserDetailService")
 public class CustomUserDetailService implements UserDetailsService {
 
