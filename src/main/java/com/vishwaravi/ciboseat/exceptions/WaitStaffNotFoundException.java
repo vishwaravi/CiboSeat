@@ -7,9 +7,9 @@ public class WaitStaffNotFoundException extends RuntimeException{
 
     /**
      * Constructor for the WaitStaffNotFound Exception.
-     * @param msg - error message.
+     * @param message - error message.
      */
-    public WaitStaffNotFoundException(String msg){
-        super(msg);
+    public WaitStaffNotFoundException(String message){
+        super(message);
     }
 }

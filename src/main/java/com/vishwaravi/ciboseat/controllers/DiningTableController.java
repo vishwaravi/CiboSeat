@@ -5,12 +5,16 @@ import java.util.List;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.vishwaravi.ciboseat.dto.AssignedStaffInfoRes;
 import com.vishwaravi.ciboseat.models.DiningTableModel;
 import com.vishwaravi.ciboseat.repositories.DiningTableRepo;
+import com.vishwaravi.ciboseat.services.WaitStaffService;
 
 /** 
  * Controller for handling Dining Table Requests
@@ -19,10 +23,11 @@ import com.vishwaravi.ciboseat.repositories.DiningTableRepo;
 @RestController
 public class DiningTableController {
 
-    DiningTableRepo diningTableRepo;
-
-    DiningTableController(DiningTableRepo diningTableRepo){
+    private DiningTableRepo diningTableRepo;
+    private WaitStaffService waitStaffService;
+    DiningTableController(DiningTableRepo diningTableRepo, WaitStaffService waitStaffService){
         this.diningTableRepo = diningTableRepo;
+        this.waitStaffService = waitStaffService;
     }
     
     /**
@@ -44,5 +49,11 @@ public class DiningTableController {
     public ResponseEntity<List<DiningTableModel>> getAllTables(){
         List<DiningTableModel> tables = diningTableRepo.findAll();
         return new ResponseEntity<>(tables,HttpStatus.OK);
+    }
+
+    @PutMapping("/assign/{staffId}/table/{tableId}")
+    public ResponseEntity<AssignedStaffInfoRes> assignStaffToTable(@PathVariable long staffId,@PathVariable long tableId){
+        AssignedStaffInfoRes res = waitStaffService.assignStaffToTable(staffId, tableId);
+        return new ResponseEntity<>(res,HttpStatus.OK);
     }
 }

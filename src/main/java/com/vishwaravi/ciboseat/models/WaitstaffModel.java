@@ -30,7 +30,7 @@ public class WaitstaffModel implements UserDetails{
 
     @Id
     @Column(name = "id", nullable = false)
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id;
 
     @Column(name = "name",nullable = false)
@@ -41,6 +41,9 @@ public class WaitstaffModel implements UserDetails{
 
     @Column(name = "password",nullable = false)
     private String password;
+    
+    @Column(name="is_staff_assigned")
+    private boolean isWaitStaffAssigned = false;
 
     @Column(name="time_stamp")
     @CreationTimestamp

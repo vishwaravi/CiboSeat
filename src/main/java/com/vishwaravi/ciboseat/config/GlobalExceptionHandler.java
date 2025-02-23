@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+import com.vishwaravi.ciboseat.exceptions.DiningTableNotFoundException;
+import com.vishwaravi.ciboseat.exceptions.WaitStaffNotAssignableException;
 import com.vishwaravi.ciboseat.exceptions.WaitStaffNotFoundException;
 /**
  * Global Exception Handler for Handling Runtime Exceptions.
@@ -23,10 +25,33 @@ public class GlobalExceptionHandler {
      */
     @ExceptionHandler(WaitStaffNotFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    public ResponseEntity<Map<String,String>> WaitStaffNotFoundException(WaitStaffNotFoundException e){
+    public ResponseEntity<Map<String,String>> waitStaffNotFoundExceptionHandler(WaitStaffNotFoundException e){
         Map<String,String> res = new HashMap<>();
         res.put("error","404 - Not Found");
         res.put("message", e.getMessage());
         return new ResponseEntity<Map<String,String>>(res,HttpStatus.NOT_FOUND);
+    }
+
+    /**
+     * Function for Handling DiningTableNotFound Exception
+     * @param e - DiningTableNotFoundException
+     * @return - Custom response with error code and error message to the client.
+     */
+    @ExceptionHandler(DiningTableNotFoundException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public ResponseEntity<Map<String,String>> diningTableNotFoundExceptionHandler(DiningTableNotFoundException e){
+        Map<String,String> res = new HashMap<>();
+        res.put("error","404 - Not Found");
+        res.put("message", e.getMessage());
+        return new ResponseEntity<Map<String,String>>(res,HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(WaitStaffNotAssignableException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ResponseEntity<Map<String,String>> waitStaffNotAssignableExceptionHandler(WaitStaffNotAssignableException e){
+        Map<String,String> res = new HashMap<>();
+        res.put("error","BAD REQUEST");
+        res.put("message", e.getMessage());
+        return new ResponseEntity<Map<String,String>>(res,HttpStatus.BAD_REQUEST);
     }
 }
