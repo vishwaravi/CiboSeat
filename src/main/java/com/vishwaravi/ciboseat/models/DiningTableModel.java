@@ -1,6 +1,7 @@
 package com.vishwaravi.ciboseat.models;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -25,7 +26,7 @@ import lombok.NoArgsConstructor;
 public class DiningTableModel {
     
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private Integer Id;
     
@@ -35,6 +36,9 @@ public class DiningTableModel {
 
     @Column(name="seat_count")
     private Integer seatCount;
+
+    @Column(name="seats")
+    private List<String> seats;
 
     @Column(name = "occupied_count")
     private Integer occupiedCount;

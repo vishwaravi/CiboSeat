@@ -4,6 +4,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import com.vishwaravi.ciboseat.models.DiningTableModel;
+
 import java.util.Optional;
 
 /*

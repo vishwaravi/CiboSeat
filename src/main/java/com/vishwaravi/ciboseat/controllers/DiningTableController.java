@@ -51,6 +51,12 @@ public class DiningTableController {
         return new ResponseEntity<>(tables,HttpStatus.OK);
     }
 
+    /**
+     * Endpoint Function for assigning staff to the Table.
+     * @param staffId
+     * @param tableId
+     * @return - Response with a assigned Information.
+     */
     @PutMapping("/assign/{staffId}/table/{tableId}")
     public ResponseEntity<AssignedStaffInfoRes> assignStaffToTable(@PathVariable long staffId,@PathVariable long tableId){
         AssignedStaffInfoRes res = waitStaffService.assignStaffToTable(staffId, tableId);

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import com.vishwaravi.ciboseat.exceptions.DiningTableNotFoundException;
+import com.vishwaravi.ciboseat.exceptions.InvalidInputException;
 import com.vishwaravi.ciboseat.exceptions.WaitStaffNotAssignableException;
 import com.vishwaravi.ciboseat.exceptions.WaitStaffNotFoundException;
 /**
@@ -49,6 +50,15 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(WaitStaffNotAssignableException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public ResponseEntity<Map<String,String>> waitStaffNotAssignableExceptionHandler(WaitStaffNotAssignableException e){
+        Map<String,String> res = new HashMap<>();
+        res.put("error","BAD REQUEST");
+        res.put("message", e.getMessage());
+        return new ResponseEntity<Map<String,String>>(res,HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(InvalidInputException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ResponseEntity<Map<String,String>> inavlidInputExceptionHandler(InvalidInputException e){
         Map<String,String> res = new HashMap<>();
         res.put("error","BAD REQUEST");
         res.put("message", e.getMessage());
