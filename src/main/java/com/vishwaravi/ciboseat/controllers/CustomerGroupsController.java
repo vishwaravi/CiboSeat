@@ -27,9 +27,9 @@ public class CustomerGroupsController {
         return customerGroupsService.createGroup(customerGroupsDto);
     }
 
-    @GetMapping("/get_avail_seats/{tableId}")
-    public ResponseEntity<?> getAvailableSeats(@PathVariable long tableId){
-        List<String> list = customerGroupsService.getAvailableSeats(tableId);
+    @GetMapping("/get_filled_seats/{tableId}")
+    public ResponseEntity<?> getFilledSeats(@PathVariable long tableId){
+        List<String> list = customerGroupsService.getFilledSeats(tableId);
         return new ResponseEntity<>(list,HttpStatus.OK);
     }
 }

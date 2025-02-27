@@ -14,6 +14,5 @@ import lombok.NoArgsConstructor;
 public class AssignedStaffInfoRes {
     private Long waitStaffId;
     private Long tableId;
-    @Builder.Default
-    private String timeSTamp = LocalDateTime.now().toString();
+    private LocalDateTime timeStamp;
 }

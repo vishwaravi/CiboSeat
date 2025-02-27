@@ -5,11 +5,14 @@ import java.util.List;
 
 import org.hibernate.annotations.CreationTimestamp;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -26,11 +29,12 @@ public class CustomerGroupsModel {
     
     @Id
     @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id;
 
-    @Column(name = "table_id")
-    private Long tableId;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "table_id")
+    private DiningTableModel diningTable;
 
     @Column(name = "customer_count")
     private Integer customerCount;

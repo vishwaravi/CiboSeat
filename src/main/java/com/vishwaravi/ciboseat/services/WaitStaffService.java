@@ -68,6 +68,7 @@ public class WaitStaffService {
                 return AssignedStaffInfoRes.builder()
                     .tableId(tableId)
                     .waitStaffId(staffId)
+                    .timeStamp(staff.get().getTimeStamp())
                     .build();
             }
             else throw new WaitStaffNotFoundException("WaitStaff with ID "+staffId+" NotFound");
