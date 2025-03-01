@@ -1,10 +1,13 @@
 package com.vishwaravi.ciboseat.controllers;
 
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -28,8 +31,19 @@ public class CustomerGroupsController {
     }
 
     @GetMapping("/get_filled_seats/{tableId}")
-    public ResponseEntity<?> getFilledSeats(@PathVariable long tableId){
-        List<String> list = customerGroupsService.getFilledSeats(tableId);
+    public ResponseEntity<Map<Long,List<String>>> getFilledSeats(@PathVariable long tableId){
+        Map<Long,List<String>> list = customerGroupsService.getGroupsByTable(tableId);
         return new ResponseEntity<>(list,HttpStatus.OK);
+    }
+
+    @DeleteMapping("/delete_group/{groupId}")
+    public ResponseEntity<Map<String,String>> deleteCustomerGroup(@PathVariable long groupId){
+        if(customerGroupsService.deleteCustomerGroupById(groupId)){
+            Map<String,String> res = new HashMap<>();
+            res.put("status","deleted");
+            return new ResponseEntity<>(res,HttpStatus.OK);
+        }
+        else return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        
     }
 }

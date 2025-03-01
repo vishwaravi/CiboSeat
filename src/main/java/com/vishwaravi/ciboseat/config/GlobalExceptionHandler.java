@@ -10,11 +10,10 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+import com.vishwaravi.ciboseat.exceptions.DataNotFoundException;
 import com.vishwaravi.ciboseat.exceptions.DiningTableFullException;
-import com.vishwaravi.ciboseat.exceptions.DiningTableNotFoundException;
 import com.vishwaravi.ciboseat.exceptions.InvalidInputException;
 import com.vishwaravi.ciboseat.exceptions.WaitStaffNotAssignableException;
-import com.vishwaravi.ciboseat.exceptions.WaitStaffNotFoundException;
 /**
  * Global Exception Handler for Handling Runtime Exceptions.
  */
@@ -22,27 +21,13 @@ import com.vishwaravi.ciboseat.exceptions.WaitStaffNotFoundException;
 public class GlobalExceptionHandler {
 
     /**
-     * Function for Handling WaitStaffNotFound Exception
-     * @param e - WaitStaffNotFoundException 
+     * Function for Handling DataNotFound Exception
+     * @param e - DataNotFoundException 
      * @return - Custom response with error code and error message to the client.
      */
-    @ExceptionHandler(WaitStaffNotFoundException.class)
+    @ExceptionHandler(DataNotFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    public ResponseEntity<Map<String,String>> waitStaffNotFoundExceptionHandler(WaitStaffNotFoundException e){
-        Map<String,String> res = new HashMap<>();
-        res.put("error","404 - Not Found");
-        res.put("message", e.getMessage());
-        return new ResponseEntity<Map<String,String>>(res,HttpStatus.NOT_FOUND);
-    }
-
-    /**
-     * Function for Handling DiningTableNotFound Exception
-     * @param e - DiningTableNotFoundException
-     * @return - Custom response with error code and error message to the client.
-     */
-    @ExceptionHandler(DiningTableNotFoundException.class)
-    @ResponseStatus(HttpStatus.NOT_FOUND)
-    public ResponseEntity<Map<String,String>> diningTableNotFoundExceptionHandler(DiningTableNotFoundException e){
+    public ResponseEntity<Map<String,String>> dataNotFoundExceptionHandler(DataNotFoundException e){
         Map<String,String> res = new HashMap<>();
         res.put("error","404 - Not Found");
         res.put("message", e.getMessage());

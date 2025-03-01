@@ -32,7 +32,7 @@ public class CustomerGroupsModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "table_id")
     private DiningTableModel diningTable;
 

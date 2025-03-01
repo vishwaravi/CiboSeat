@@ -5,9 +5,8 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 
 import com.vishwaravi.ciboseat.dto.AssignedStaffInfoRes;
-import com.vishwaravi.ciboseat.exceptions.DiningTableNotFoundException;
+import com.vishwaravi.ciboseat.exceptions.DataNotFoundException;
 import com.vishwaravi.ciboseat.exceptions.WaitStaffNotAssignableException;
-import com.vishwaravi.ciboseat.exceptions.WaitStaffNotFoundException;
 import com.vishwaravi.ciboseat.models.DiningTableModel;
 import com.vishwaravi.ciboseat.models.WaitstaffModel;
 import com.vishwaravi.ciboseat.repositories.DiningTableRepo;
@@ -44,7 +43,7 @@ public class WaitStaffService {
         if(staff.isPresent())
             return staff.get();
         else
-            throw new WaitStaffNotFoundException("WaitStaff with name "+name+" NotFound");
+            throw new DataNotFoundException("WaitStaff with name "+name+" NotFound");
     }
 
     /**
@@ -71,8 +70,8 @@ public class WaitStaffService {
                     .timeStamp(staff.get().getTimeStamp())
                     .build();
             }
-            else throw new WaitStaffNotFoundException("WaitStaff with ID "+staffId+" NotFound");
+            else throw new DataNotFoundException("WaitStaff with ID "+staffId+" NotFound");
         }
-        else throw new DiningTableNotFoundException("Table with ID "+tableId+" not Found");
+        else throw new DataNotFoundException("Table with ID "+tableId+" not Found");
     }
 }
