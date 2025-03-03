@@ -36,9 +36,6 @@ public class DiningTableModel {
     @Column(name="seat_count")
     private Integer seatCount;
 
-    @Column(name = "occupied_count")
-    private Integer occupiedCount;
-
     @Column(name="time_stamp",nullable = false)
     @CreationTimestamp
     private LocalDateTime timeStamp;

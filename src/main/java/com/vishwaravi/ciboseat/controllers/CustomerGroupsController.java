@@ -31,8 +31,8 @@ public class CustomerGroupsController {
     }
 
     @GetMapping("/get_filled_seats/{tableId}")
-    public ResponseEntity<Map<Long,List<String>>> getFilledSeats(@PathVariable long tableId){
-        Map<Long,List<String>> list = customerGroupsService.getGroupsByTable(tableId);
+    public ResponseEntity<List<CustomerGroupsModel>> getFilledSeats(@PathVariable long tableId){
+        List<CustomerGroupsModel> list = customerGroupsService.getGroupsByTable(tableId);
         return new ResponseEntity<>(list,HttpStatus.OK);
     }
 

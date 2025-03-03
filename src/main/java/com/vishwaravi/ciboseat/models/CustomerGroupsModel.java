@@ -1,7 +1,6 @@
 package com.vishwaravi.ciboseat.models;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -38,9 +37,6 @@ public class CustomerGroupsModel {
 
     @Column(name = "customer_count")
     private Integer customerCount;
-
-    @Column(name = "seats")
-    private List<String> seats;
 
     @Column(name="time_stamp",nullable = false)
     @CreationTimestamp

@@ -1,0 +1,83 @@
+{
+	"info": {
+		"_postman_id": "18015f53-f056-4214-9a6f-46c4de91d799",
+		"name": "tables",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32407602"
+	},
+	"item": [
+		{
+			"name": "add_table",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "vijay",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "user1",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"seatCount\":4\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseurl}}/addtable",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"addtable"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getall_tables",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "vijay",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "user1",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseurl}}/tables",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"tables"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

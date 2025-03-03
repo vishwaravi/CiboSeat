@@ -1,0 +1,151 @@
+{
+	"info": {
+		"_postman_id": "15ab8a53-a71d-49c3-b6b5-67a45ddc0b8d",
+		"name": "waitstaff",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32407602"
+	},
+	"item": [
+		{
+			"name": "add_staff",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\" : \"vijay\",\n    \"age\" : 47,\n    \"password\" : \"user1\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseurl}}/addstaff",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"addstaff"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "surya",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "user1",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseurl}}/login",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get_by_name",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "vijay",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "user1",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseurl}}/waitstaffs/vijay",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"waitstaffs",
+						"vijay"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "assign_staff_to_table",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "vijay",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "user1",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{baseurl}}/assign/1/table/1",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"assign",
+						"1",
+						"table",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

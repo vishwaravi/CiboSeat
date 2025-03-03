@@ -1,0 +1,129 @@
+{
+	"info": {
+		"_postman_id": "ff0daef5-d03a-4ad4-9524-f87e5ed1b0d2",
+		"name": "customer_groups",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32407602"
+	},
+	"item": [
+		{
+			"name": "get_groups_by_table_by_id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "vijay",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "user1",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseurl}}/get_filled_seats/1",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"get_filled_seats",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create_group",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "vijay",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "user1",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"tableId\":1,\n    \"seatCount\":2\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseurl}}/creategroup",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"creategroup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete_group_by_id",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "vijay",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "user1",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseurl}}/delete_group/1",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"delete_group",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
