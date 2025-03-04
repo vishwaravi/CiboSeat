@@ -1,13 +1,13 @@
 {
 	"info": {
-		"_postman_id": "2e19ce8d-c433-414b-9c7f-2db67ebd759c",
-		"name": "Food",
+		"_postman_id": "6df9273b-f85d-413b-83f5-7c01b569c3df",
+		"name": "Orders",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "32407602"
 	},
 	"item": [
 		{
-			"name": "add_dish",
+			"name": "create_order",
 			"request": {
 				"auth": {
 					"type": "basic",
@@ -28,7 +28,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"name\": \"Grill Chicken (full)\",\n    \"price\": 599,\n    \"catagory\": \"Non-Veg\",\n    \"gst\": 12\n}",
+					"raw": "{\n    \"groupId\":1,\n    \"dishId\":1,\n    \"quantity\":2\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -36,54 +36,20 @@
 					}
 				},
 				"url": {
-					"raw": "{{baseurl}}/dishes/add",
+					"raw": "{{baseurl}}/orders/create",
 					"host": [
 						"{{baseurl}}"
 					],
 					"path": [
-						"dishes",
-						"add"
+						"orders",
+						"create"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "delete_dish_by_id",
-			"request": {
-				"auth": {
-					"type": "basic",
-					"basic": [
-						{
-							"key": "username",
-							"value": "vijay",
-							"type": "string"
-						},
-						{
-							"key": "password",
-							"value": "user1",
-							"type": "string"
-						}
-					]
-				},
-				"method": "DELETE",
-				"header": [],
-				"url": {
-					"raw": "{{baseurl}}/dishes/remove/1",
-					"host": [
-						"{{baseurl}}"
-					],
-					"path": [
-						"dishes",
-						"remove",
-						"1"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "get_foods",
+			"name": "get_all_orders",
 			"request": {
 				"auth": {
 					"type": "basic",
@@ -103,19 +69,19 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{baseurl}}/dishes",
+					"raw": "{{baseurl}}/orders",
 					"host": [
 						"{{baseurl}}"
 					],
 					"path": [
-						"dishes"
+						"orders"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "update_dish_by_id",
+			"name": "cancel_order_by_id",
 			"request": {
 				"auth": {
 					"type": "basic",
@@ -132,25 +98,49 @@
 						}
 					]
 				},
-				"method": "PUT",
+				"method": "DELETE",
 				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n        \"name\": \"Fish Fry\",\n        \"price\": 799,\n        \"catagory\": \"sea foods\",\n        \"gst\": 5\n    }",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
 				"url": {
-					"raw": "{{baseurl}}/dishes/update/1",
+					"raw": "{{baseurl}}/orders/cancel/2",
 					"host": [
 						"{{baseurl}}"
 					],
 					"path": [
-						"dishes",
-						"update",
+						"orders",
+						"cancel",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get_order_details_by_id",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "vijay",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "user1",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseurl}}/orders/1",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"orders",
 						"1"
 					]
 				}

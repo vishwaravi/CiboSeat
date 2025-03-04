@@ -3,6 +3,7 @@ package com.vishwaravi.ciboseat.models;
 import java.time.LocalDateTime;
 
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -39,4 +40,8 @@ public class DiningTableModel {
     @Column(name="time_stamp",nullable = false)
     @CreationTimestamp
     private LocalDateTime timeStamp;
+
+    @Column(name="last_modified",nullable = false)
+    @UpdateTimestamp
+    private LocalDateTime lastModified;
 }

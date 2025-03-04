@@ -5,6 +5,7 @@ import jakarta.persistence.Id;
 import java.time.LocalDateTime;
 
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -21,7 +22,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "customer_orders")
-public class CustomerOrdersModel {
+public class OrdersModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -38,7 +39,7 @@ public class CustomerOrdersModel {
     private Integer quantity;
 
     @Transient
-    private Boolean servedStatus;
+    private Boolean servedStatus = false;
 
     @Column(name="total_amount")
     private Integer totalAmount;
@@ -46,4 +47,8 @@ public class CustomerOrdersModel {
     @Column(name="time_stamp",nullable = false)
     @CreationTimestamp
     private LocalDateTime timeStamp;
+
+    @Column(name="last_modified",nullable = false)
+    @UpdateTimestamp
+    private LocalDateTime lastModified;
 }

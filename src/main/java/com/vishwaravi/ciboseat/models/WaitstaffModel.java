@@ -5,6 +5,7 @@ import java.util.Collection;
 import java.util.List;
 
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -48,6 +49,10 @@ public class WaitstaffModel implements UserDetails{
     @Column(name="time_stamp")
     @CreationTimestamp
     private LocalDateTime timeStamp;
+
+    @Column(name="last_modified",nullable = false)
+    @UpdateTimestamp
+    private LocalDateTime lastModified;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
