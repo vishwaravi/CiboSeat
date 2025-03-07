@@ -30,10 +30,10 @@ public class OrdersModel {
     private Long Id;
 
     @Column(name="group_id",nullable = false)
-    private String groupId;
+    private long groupId;
 
     @Column(name="dish_id",nullable = false)
-    private Integer dishId;
+    private long dishId;
 
     @Column(name = "quantity", nullable = false)
     private Integer quantity;

@@ -36,9 +36,6 @@ public class DishModel {
     @Column(name="catagory")
     private String catagory;
 
-    @Column(name="gst")
-    private Integer gst;
-
     @Column(name="time_stamp",nullable = false)
     @CreationTimestamp
     private LocalDateTime timeStamp;

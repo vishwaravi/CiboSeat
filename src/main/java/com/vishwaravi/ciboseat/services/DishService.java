@@ -28,8 +28,6 @@ public class DishService {
                 existingDish.setName(dishModel.getName());
             if(dishModel.getPrice()!=null)
                 existingDish.setPrice(dishModel.getPrice());
-            if(dishModel.getGst()!=null)
-                existingDish.setGst(dishModel.getGst());
             if(dishModel.getCatagory()!=null)
                 existingDish.setCatagory(dishModel.getCatagory());
             
